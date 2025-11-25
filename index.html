@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruth Mery - Mundo del Fútbol</title>
+    <title>Ruth Mery - Pasión por el Fútbol Peruano</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1e3d72; /* Azul equipo */
-            --secondary: #c9a227; /* Dorado */
-            --accent: #2e5aa7; /* Azul claro */
-            --dark: #0d1f3d; /* Azul oscuro */
+            --primary: #CC0000; /* Rojo bandera peruana */
+            --secondary: #FFFFFF; /* Blanco bandera */
+            --accent: #CC0000; /* Rojo */
+            --dark: #990000; /* Rojo oscuro */
             --light: #f8fbff; /* Blanco */
-            --field-green: #2d8c3a; /* Verde campo */
+            --field-green: #1a4d1a; /* Verde oscuro campo */
             --text-color: #263238; /* Gris oscuro para texto */
-            --shadow: rgba(45, 140, 58, 0.4);
+            --shadow: rgba(204, 0, 0, 0.4);
         }
         
         body {
@@ -23,13 +23,17 @@
             margin: 0;
             padding: 0;
             color: var(--text-color);
-            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Patrón de campo de fútbol de fondo */
+        /* Patrón de bandera peruana sutil */
         body::before {
             content: "";
             position: fixed;
@@ -37,22 +41,25 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                linear-gradient(90deg, transparent 49%, white 49%, white 51%, transparent 51%),
-                linear-gradient(0deg, transparent 49%, white 49%, white 51%, transparent 51%),
-                radial-gradient(circle at center, transparent 40%, var(--field-green) 100%);
-            background-size: 100px 100px, 100px 100px, 100% 100%;
+            background: 
+                linear-gradient(90deg, 
+                    transparent 0%, 
+                    rgba(204, 0, 0, 0.1) 33%, 
+                    rgba(255, 255, 255, 0.1) 33%, 
+                    rgba(255, 255, 255, 0.1) 66%, 
+                    rgba(204, 0, 0, 0.1) 66%, 
+                    transparent 100%);
             z-index: -1;
-            opacity: 0.1;
+            opacity: 0.3;
         }
 
         header {
-            background: linear-gradient(135deg, rgba(30, 61, 114, 0.9), rgba(45, 140, 58, 0.9));
-            color: var(--light);
+            background: linear-gradient(135deg, rgba(204, 0, 0, 0.9), rgba(153, 0, 0, 0.9));
+            color: var(--secondary);
             padding: 30px 0;
             text-align: center;
             margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(13, 31, 61, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
             border-bottom: 3px solid var(--secondary);
@@ -66,7 +73,7 @@
             transform: translateX(-50%);
             font-size: 2.5rem;
             color: var(--secondary);
-            text-shadow: 0 0 10px rgba(201, 162, 39, 0.7);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
             animation: bounceBall 2s infinite alternate;
         }
 
@@ -80,8 +87,8 @@
             font-size: 2.8rem;
             letter-spacing: 2px;
             font-family: 'Dancing Script', cursive;
-            color: var(--light);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            color: var(--secondary);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             position: relative;
             display: inline-block;
         }
@@ -111,11 +118,11 @@
         }
         
         section {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.95);
             padding: 30px;
             margin-bottom: 30px;
             border-radius: 15px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
             transition: all 0.4s ease;
             border-top: 3px solid var(--accent);
             position: relative;
@@ -130,7 +137,7 @@
             right: 0;
             width: 50px;
             height: 50px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%232e5aa7' d='M50,10 A40,40 0 1,0 50,90 A40,40 0 1,0 50,10 Z' stroke='%23c9a227' stroke-width='3'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23CC0000' d='M50,10 A40,40 0 1,0 50,90 A40,40 0 1,0 50,10 Z' stroke='%23FFFFFF' stroke-width='3'/%3E%3C/svg%3E");
             background-size: contain;
             background-repeat: no-repeat;
             opacity: 0.1;
@@ -139,7 +146,7 @@
         
         section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(30, 61, 114, 0.2);
+            box-shadow: 0 12px 25px rgba(204, 0, 0, 0.3);
         }
         
         h2 {
@@ -159,7 +166,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: linear-gradient(90deg, var(--primary), var(--dark));
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.3s ease;
@@ -176,7 +183,7 @@
         
         li {
             padding: 12px 0;
-            border-bottom: 1px dashed #90caf9;
+            border-bottom: 1px dashed #ff9999;
             position: relative;
             padding-left: 40px;
             font-size: 1.1rem;
@@ -184,7 +191,7 @@
         }
 
         li:hover {
-            background-color: rgba(45, 140, 58, 0.1);
+            background-color: rgba(204, 0, 0, 0.1);
             transform: translateX(5px);
         }
         
@@ -200,7 +207,7 @@
 
         li:hover::before {
             transform: rotate(360deg) scale(1.2);
-            color: var(--secondary);
+            color: var(--dark);
         }
         
         a {
@@ -210,7 +217,7 @@
             font-weight: 600;
             padding: 2px 4px;
             border-radius: 4px;
-            background: linear-gradient(to right, transparent 50%, rgba(45, 140, 58, 0.2) 50%);
+            background: linear-gradient(to right, transparent 50%, rgba(204, 0, 0, 0.2) 50%);
             background-size: 200% 100%;
             background-position: right bottom;
         }
@@ -223,8 +230,8 @@
         footer {
             text-align: center;
             padding: 25px;
-            background: linear-gradient(135deg, rgba(30, 61, 114, 0.9), rgba(45, 140, 58, 0.9));
-            color: var(--light);
+            background: linear-gradient(135deg, rgba(204, 0, 0, 0.9), rgba(153, 0, 0, 0.9));
+            color: var(--secondary);
             margin-top: 50px;
             font-size: 1rem;
             position: relative;
@@ -237,7 +244,7 @@
             left: 0;
             width: 100%;
             height: 20px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath fill='%231e3d72' d='M0,20 C20,10 40,15 50,20 C60,15 80,10 100,20 Z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath fill='%23CC0000' d='M0,20 C20,10 40,15 50,20 C60,15 80,10 100,20 Z'/%3E%3C/svg%3E");
             background-size: 100% 100%;
         }
         
@@ -247,8 +254,8 @@
             width: 100%;
             max-width: 400px;
             border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            border: 4px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 4px solid var(--secondary);
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
@@ -261,14 +268,14 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(30, 61, 114, 0.1), rgba(45, 140, 58, 0.1));
+            background: linear-gradient(135deg, rgba(204, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
             z-index: 1;
         }
         
         .imagen-centrada:hover {
             transform: scale(1.02);
-            box-shadow: 0 15px 30px rgba(30, 61, 114, 0.3);
-            border-color: var(--secondary);
+            box-shadow: 0 15px 30px rgba(204, 0, 0, 0.4);
+            border-color: var(--primary);
         }
         
         .centrar-texto {
@@ -290,7 +297,7 @@
         
         .btn-sport {
             display: inline-block;
-            background: linear-gradient(to right, var(--primary), var(--accent));
+            background: linear-gradient(to right, var(--primary), var(--dark));
             color: white;
             padding: 12px 25px;
             border-radius: 30px;
@@ -321,7 +328,7 @@
         .btn-sport:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 0 var(--dark);
-            background: linear-gradient(to right, var(--accent), var(--primary));
+            background: linear-gradient(to right, var(--dark), var(--primary));
         }
 
         .btn-sport:hover::before {
@@ -336,7 +343,7 @@
         /* Estilo para los botones de compañeros */
         .classmate-btn {
             display: inline-block;
-            background: linear-gradient(to right, var(--primary), var(--accent));
+            background: linear-gradient(to right, var(--primary), var(--dark));
             color: white;
             padding: 12px 25px;
             border-radius: 30px;
@@ -369,7 +376,7 @@
         .classmate-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 0 var(--dark);
-            background: linear-gradient(to right, var(--accent), var(--primary));
+            background: linear-gradient(to right, var(--dark), var(--primary));
         }
 
         .classmate-btn:hover::before {
@@ -400,70 +407,53 @@
             100% { transform: translateY(0px); }
         }
 
-        /* Balones de fútbol animados */
+        /* Balones de fútbol animados e interactivos */
         .soccer-ball {
             position: fixed;
-            font-size: 24px;
-            color: var(--primary);
+            font-size: 30px;
+            color: white;
             z-index: 100;
-            pointer-events: none;
-            text-shadow: 0 0 8px rgba(255,255,255,0.5);
-            animation: floatBall 15s linear infinite;
-            opacity: 0.8;
-            filter: drop-shadow(0 0 3px var(--shadow));
+            cursor: pointer;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: floatBall 20s linear infinite;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
             transform-origin: center;
+            transition: transform 0.1s ease;
+            user-select: none;
         }
 
         @keyframes floatBall {
             0% {
                 transform: translate(0, 0) rotate(0deg) scale(1);
-                opacity: 0;
-            }
-            10% {
                 opacity: 0.8;
+            }
+            25% {
+                transform: translate(25vw, 25vh) rotate(90deg) scale(1.1);
             }
             50% {
-                transform: translate(50vw, 50vh) rotate(180deg) scale(1.2);
+                transform: translate(50vw, 50vh) rotate(180deg) scale(1);
             }
-            90% {
-                opacity: 0.8;
+            75% {
+                transform: translate(75vw, 25vh) rotate(270deg) scale(1.1);
             }
             100% {
-                transform: translate(100vw, 100vh) rotate(360deg) scale(1);
-                opacity: 0;
+                transform: translate(100vw, 0) rotate(360deg) scale(1);
+                opacity: 0.8;
             }
         }
 
-        /* Efecto de balón girando */
+        /* Efecto de balón girando al hacer click */
         @keyframes spinBall {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(180deg); }
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.3); }
+            100% { transform: rotate(360deg) scale(1); }
         }
 
-        /* Contenedor de elementos decorativos */
-        .sport-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        /* Elementos decorativos fijos */
-        .decorative-sport {
-            position: absolute;
-            font-size: 40px;
-            color: var(--primary);
-            opacity: 0.2;
-            animation: spinBall 3s ease-in-out infinite;
-        }
-
-        /* Líneas de campo animadas */
-        .field-line {
-            position: fixed;
-            background: rgba(255, 255, 255, 0.3);
-            z-index: -1;
-            pointer-events: none;
+        /* Efecto de rebote */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
         @media (max-width: 768px) {
@@ -488,21 +478,18 @@
                 padding: 10px 15px;
                 font-size: 0.9rem;
             }
+
+            .soccer-ball {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="sport-container">
-        <div class="decorative-sport" style="top: 10%; left: 5%;">⚽</div>
-        <div class="decorative-sport" style="top: 30%; right: 10%;">🥅</div>
-        <div class="decorative-sport" style="bottom: 20%; left: 15%;">👟</div>
-        <div class="decorative-sport" style="bottom: 40%; right: 5%;">⚽</div>
-    </div>
-
     <header class="floating">
         <div class="container">
             <h1>RUTH MERY BARRIGA VERA</h1>
-            <p>« Estudiante Universitaria - Jugando el partido del conocimiento »</p>
+            <p>« Estudiante Universitaria - Con la pasión de la blanquirroja »</p>
         </div>
     </header>
 
@@ -514,7 +501,7 @@
             </div>
             <img src="Mariposa.jpg" alt="Ruth Mery y sus compañeros" class="imagen-centrada">
             <div class="centrar-texto">
-                <p>« Como en el fútbol, en la universidad cada curso es un partido que debemos ganar »</p>
+                <p>« Como la selección peruana, en la universidad jugamos con corazón y determinación »</p>
                 <button class="btn-sport">Ver Mi Formación</button>
             </div>
         </section>
@@ -567,18 +554,18 @@
     </div>
 
     <footer>
-        <p>&copy; 2023 Ruth Mery Barriga Vera | Jugando el partido del conocimiento</p>
+        <p>&copy; 2023 Ruth Mery Barriga Vera | Con el corazón de la blanquirroja</p>
     </footer>
 
     <script>
         // Efecto especial para botones
         document.querySelectorAll('.btn-sport').forEach(button => {
             button.addEventListener('mouseenter', () => {
-                button.style.background = 'linear-gradient(to right, #152a50, var(--primary))';
+                button.style.background = 'linear-gradient(to right, #990000, var(--primary))';
             });
             
             button.addEventListener('mouseleave', () => {
-                button.style.background = 'linear-gradient(to right, var(--primary), var(--accent))';
+                button.style.background = 'linear-gradient(to right, var(--primary), var(--dark))';
             });
             
             button.addEventListener('click', () => {
@@ -591,64 +578,50 @@
             });
         });
         
-        // Crear balones de fútbol animados
+        // Crear balones de fútbol interactivos
         function createSoccerBalls() {
-            const ballChars = ['⚽', '🥅', '👟'];
-            const ballColors = ['#1e3d72', '#2e5aa7', '#c9a227', '#2d8c3a'];
-            
-            for (let i = 0; i < 12; i++) {
+            for (let i = 0; i < 8; i++) {
                 setTimeout(() => {
                     const ball = document.createElement('div');
                     ball.className = 'soccer-ball';
-                    ball.innerHTML = ballChars[Math.floor(Math.random() * ballChars.length)];
-                    ball.style.left = Math.random() * -100 + 'px';
-                    ball.style.top = Math.random() * 100 + 'vh';
-                    ball.style.fontSize = (Math.random() * 25 + 20) + 'px';
-                    ball.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                    ball.innerHTML = '⚽';
+                    ball.style.left = Math.random() * 90 + 5 + 'vw';
+                    ball.style.top = Math.random() * 90 + 5 + 'vh';
+                    ball.style.fontSize = (Math.random() * 20 + 25) + 'px';
+                    ball.style.animationDuration = (Math.random() * 15 + 20) + 's';
                     ball.style.animationDelay = (Math.random() * 5) + 's';
-                    ball.style.opacity = Math.random() * 0.5 + 0.4;
-                    ball.style.color = ballColors[Math.floor(Math.random() * ballColors.length)];
+                    ball.style.opacity = Math.random() * 0.4 + 0.6;
+                    
+                    // Hacer el balón interactivo
+                    ball.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        
+                        // Detener animación actual
+                        this.style.animation = 'none';
+                        
+                        // Aplicar efecto de giro
+                        this.style.animation = 'spinBall 0.8s ease-in-out';
+                        
+                        // Calcular dirección aleatoria para el rebote
+                        const randomX = (Math.random() - 0.5) * 200;
+                        const randomY = (Math.random() - 0.5) * 200;
+                        
+                        // Aplicar transformación para el rebote
+                        this.style.transform = `translate(${randomX}px, ${randomY}px) rotate(360deg)`;
+                        
+                        // Restaurar animación después del efecto
+                        setTimeout(() => {
+                            this.style.animation = `floatBall ${Math.random() * 15 + 15}s linear infinite`;
+                            this.style.transform = '';
+                        }, 800);
+                    });
+                    
                     document.body.appendChild(ball);
-
-                    setTimeout(() => {
-                        ball.remove();
-                    }, 25000);
-                }, i * 800);
+                }, i * 1000);
             }
         }
 
-        // Efecto de giro para elementos decorativos
-        function animateDecorativeSports() {
-            const sports = document.querySelectorAll('.decorative-sport');
-            sports.forEach((sport, index) => {
-                sport.style.animationDelay = `${index * 0.5}s`;
-            });
-        }
-
-        // Crear líneas de campo
-        function createFieldLines() {
-            for (let i = 0; i < 5; i++) {
-                const line = document.createElement('div');
-                line.className = 'field-line';
-                line.style.width = Math.random() * 200 + 50 + 'px';
-                line.style.height = '2px';
-                line.style.left = Math.random() * 100 + 'vw';
-                line.style.top = Math.random() * 100 + 'vh';
-                line.style.opacity = Math.random() * 0.2 + 0.1;
-                line.style.animation = `floatBall ${Math.random() * 20 + 10}s linear infinite`;
-                document.body.appendChild(line);
-            }
-        }
-
-        // Iniciar efectos
-        document.addEventListener('DOMContentLoaded', () => {
-            createSoccerBalls();
-            animateDecorativeSports();
-            createFieldLines();
-            setInterval(createSoccerBalls, 5000);
-        });
-
-        // Efecto de movimiento al pasar el mouse
+        // Efecto de movimiento al pasar el mouse cerca de los balones
         document.addEventListener('mousemove', (e) => {
             const balls = document.querySelectorAll('.soccer-ball');
             balls.forEach(ball => {
@@ -657,10 +630,51 @@
                 const y = rect.top + rect.height/2;
                 const distance = Math.sqrt(Math.pow(e.clientX - x, 2) + Math.pow(e.clientY - y, 2));
                 
-                if (distance < 100) {
-                    ball.style.transform = `translate(${(e.clientX - x)/10}px, ${(e.clientY - y)/10}px)`;
+                if (distance < 80) {
+                    const force = (80 - distance) / 10;
+                    const angle = Math.atan2(e.clientY - y, e.clientX - x);
+                    ball.style.transform = `translate(${Math.cos(angle + Math.PI) * force}px, ${Math.sin(angle + Math.PI) * force}px)`;
                 }
             });
+        });
+
+        // Click en cualquier parte para crear un balón nuevo
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('soccer-ball')) return;
+            
+            const ball = document.createElement('div');
+            ball.className = 'soccer-ball';
+            ball.innerHTML = '⚽';
+            ball.style.left = e.clientX + 'px';
+            ball.style.top = e.clientY + 'px';
+            ball.style.fontSize = '30px';
+            ball.style.animation = 'bounce 1s ease-in-out';
+            ball.style.opacity = '0.9';
+            
+            ball.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.style.animation = 'spinBall 0.8s ease-in-out';
+                
+                const randomX = (Math.random() - 0.5) * 200;
+                const randomY = (Math.random() - 0.5) * 200;
+                this.style.transform = `translate(${randomX}px, ${randomY}px) rotate(360deg)`;
+                
+                setTimeout(() => {
+                    this.style.animation = `floatBall ${Math.random() * 15 + 15}s linear infinite`;
+                    this.style.transform = '';
+                }, 800);
+            });
+            
+            document.body.appendChild(ball);
+            
+            setTimeout(() => {
+                ball.style.animation = `floatBall ${Math.random() * 15 + 15}s linear infinite`;
+            }, 1000);
+        });
+
+        // Iniciar efectos
+        document.addEventListener('DOMContentLoaded', () => {
+            createSoccerBalls();
         });
     </script>
 </body>
