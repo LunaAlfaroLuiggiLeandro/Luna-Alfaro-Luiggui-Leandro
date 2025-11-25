@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Pérez - Mi Página Personal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #1e5799, #207cca);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .soccer-ball {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            top: 20px;
+            right: 20px;
+            animation: bounce 3s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .personal-info p, .courses li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .courses ul {
+            list-style-type: none;
+        }
+        
+        .courses li {
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .courses li:before {
+            content: "⚽";
+            position: absolute;
+            left: 0;
+        }
+        
+        .friends ul {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .friends a {
+            display: block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        
+        .friends a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .field {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to bottom, #2e8b57, #228b22);
+            z-index: -1;
+        }
+        
+        .player {
+            position: absolute;
+            bottom: 20px;
+            width: 40px;
+            height: 60px;
+            background-color: #ff6b6b;
+            border-radius: 50% 50% 40% 40%;
+            animation: run 15s linear infinite;
+        }
+        
+        .player:before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff6b6b;
+            border-radius: 50%;
+            top: -10px;
+            left: 10px;
+        }
+        
+        @keyframes run {
+            0% { left: -50px; }
+            100% { left: 100%; }
+        }
+        
+        .ball {
+            position: absolute;
+            bottom: 40px;
+            left: 20px;
+            width: 25px;
+            height: 25px;
+            background: white;
+            border-radius: 50%;
+            animation: roll 15s linear infinite;
+        }
+        
+        @keyframes roll {
+            0% { left: 20px; transform: rotate(0deg); }
+            100% { left: calc(100% + 20px); transform: rotate(720deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .friends ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Juan Pérez</h1>
+            <p>Mi Página Personal - Pasión por el Fútbol</p>
+            <div class="soccer-ball"></div>
+        </header>
+        
+        <div class="content">
+            <div class="card personal-info">
+                <h2>Datos Personales</h2>
+                <p><strong>Nombre:</strong> Juan Pérez</p>
+                <p><strong>Carrera:</strong> Ingeniería de Sistemas</p>
+                <p><strong>Universidad:</strong> Universidad Nacional</p>
+                <p><strong>Semestre:</strong> 5to Semestre</p>
+            </div>
+            
+            <div class="card courses">
+                <h2>Cursos Actuales</h2>
+                <ul>
+                    <li>Programación Web</li>
+                    <li>Base de Datos</li>
+                    <li>Inteligencia Artificial</li>
+                    <li>Redes de Computadoras</li>
+                    <li>Ingeniería de Software</li>
+                </ul>
+            </div>
+            
+            <div class="card friends">
+                <h2>Páginas de Compañeros</h2>
+                <ul>
+                    <li><a href="#">María González</a></li>
+                    <li><a href="#">Carlos Rodríguez</a></li>
+                    <li><a href="#">Ana Martínez</a></li>
+                    <li><a href="#">Luis García</a></li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2>Mi Pasión: El Fútbol</h2>
+                <p>El fútbol es más que un deporte, es una pasión que une personas y culturas. Me encanta jugar los fines de semana con mis amigos y seguir los partidos de mi equipo favorito.</p>
+                <p>Mi posición favorita es delantero, disfruto anotando goles y trabajando en equipo para alcanzar la victoria.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="player"></div>
+        <div class="ball"></div>
+    </div>
+
+    <script>
+        // Animación adicional para las tarjetas
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s, transform 0.5s';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+            
+            // Efecto de movimiento para la pelota en el header
+            const soccerBall = document.querySelector('.soccer-ball');
+            let direction = 1;
+            
+            setInterval(() => {
+                const currentRight = parseInt(window.getComputedStyle(soccerBall).right);
+                
+                if (currentRight > 100) direction = -1;
+                if (currentRight < 20) direction = 1;
+                
+                soccerBall.style.right = (currentRight + direction * 5) + 'px';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
