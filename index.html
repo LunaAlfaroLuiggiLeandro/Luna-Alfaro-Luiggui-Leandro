@@ -3,269 +3,664 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juan Pérez - Mi Página Personal</title>
+    <title>Ruth Mery - Mundo del Fútbol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+        :root {
+            --primary: #1e3d72; /* Azul equipo */
+            --secondary: #c9a227; /* Dorado */
+            --accent: #2e5aa7; /* Azul claro */
+            --dark: #0d1f3d; /* Azul oscuro */
+            --light: #f8fbff; /* Blanco */
+            --field-green: #2d8c3a; /* Verde campo */
+            --text-color: #263238; /* Gris oscuro para texto */
+            --shadow: rgba(45, 140, 58, 0.4);
         }
         
         body {
-            background: linear-gradient(to bottom, #1e5799, #207cca);
-            color: white;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+
+        /* Patrón de campo de fútbol de fondo */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, transparent 49%, white 49%, white 51%, transparent 51%),
+                linear-gradient(0deg, transparent 49%, white 49%, white 51%, transparent 51%),
+                radial-gradient(circle at center, transparent 40%, var(--field-green) 100%);
+            background-size: 100px 100px, 100px 100px, 100% 100%;
+            z-index: -1;
+            opacity: 0.1;
         }
-        
+
         header {
-            text-align: center;
+            background: linear-gradient(135deg, rgba(30, 61, 114, 0.9), rgba(45, 140, 58, 0.9));
+            color: var(--light);
             padding: 30px 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
+            text-align: center;
             margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(13, 31, 61, 0.2);
             position: relative;
             overflow: hidden;
+            border-bottom: 3px solid var(--secondary);
+        }
+        
+        header::after {
+            content: "⚽";
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            color: var(--secondary);
+            text-shadow: 0 0 10px rgba(201, 162, 39, 0.7);
+            animation: bounceBall 2s infinite alternate;
+        }
+
+        @keyframes bounceBall {
+            0% { transform: translateX(-50%) translateY(0) scale(1); }
+            100% { transform: translateX(-50%) translateY(-10px) scale(1.1); }
         }
         
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            font-family: 'Dancing Script', cursive;
+            color: var(--light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        h1:hover::after {
+            transform: scaleX(1);
         }
         
-        .soccer-ball {
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 30px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        section {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border-top: 3px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        section::before {
+            content: "";
             position: absolute;
+            top: 0;
+            right: 0;
             width: 50px;
             height: 50px;
-            background: white;
-            border-radius: 50%;
-            top: 20px;
-            right: 20px;
-            animation: bounce 3s infinite;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%232e5aa7' d='M50,10 A40,40 0 1,0 50,90 A40,40 0 1,0 50,10 Z' stroke='%23c9a227' stroke-width='3'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            transform: rotate(15deg);
         }
         
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .card {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .card:hover {
+        section:hover {
             transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(30, 61, 114, 0.2);
         }
         
         h2 {
-            border-bottom: 2px solid white;
+            color: var(--dark);
             padding-bottom: 10px;
-            margin-bottom: 15px;
-            font-size: 1.8rem;
-        }
-        
-        .personal-info p, .courses li {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-        
-        .courses ul {
-            list-style-type: none;
-        }
-        
-        .courses li {
+            font-size: 2rem;
+            display: inline-block;
+            margin-top: 0;
+            font-family: 'Dancing Script', cursive;
             position: relative;
-            padding-left: 25px;
         }
-        
-        .courses li:before {
-            content: "⚽";
+
+        h2::after {
+            content: "";
             position: absolute;
-            left: 0;
-        }
-        
-        .friends ul {
-            list-style-type: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        
-        .friends a {
-            display: block;
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            color: white;
-            transition: background-color 0.3s;
-            text-align: center;
-        }
-        
-        .friends a:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-        
-        .field {
-            position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 150px;
-            background: linear-gradient(to bottom, #2e8b57, #228b22);
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        section:hover h2::after {
+            transform: scaleX(1);
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #90caf9;
+            position: relative;
+            padding-left: 40px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        li:hover {
+            background-color: rgba(45, 140, 58, 0.1);
+            transform: translateX(5px);
+        }
+        
+        li::before {
+            content: "⚽";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            top: 10px;
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+        }
+
+        li:hover::before {
+            transform: rotate(360deg) scale(1.2);
+            color: var(--secondary);
+        }
+        
+        a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            padding: 2px 4px;
+            border-radius: 4px;
+            background: linear-gradient(to right, transparent 50%, rgba(45, 140, 58, 0.2) 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+        }
+        
+        a:hover {
+            color: var(--primary);
+            background-position: left bottom;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(30, 61, 114, 0.9), rgba(45, 140, 58, 0.9));
+            color: var(--light);
+            margin-top: 50px;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath fill='%231e3d72' d='M0,20 C20,10 40,15 50,20 C60,15 80,10 100,20 Z'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+        }
+        
+        .imagen-centrada {
+            display: block;
+            margin: 30px auto;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border: 4px solid white;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .imagen-centrada::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 61, 114, 0.1), rgba(45, 140, 58, 0.1));
+            z-index: 1;
+        }
+        
+        .imagen-centrada:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(30, 61, 114, 0.3);
+            border-color: var(--secondary);
+        }
+        
+        .centrar-texto {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .centrar-texto::after {
+            content: "⚽";
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--accent);
+            opacity: 0.5;
+        }
+        
+        .btn-sport {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin: 15px 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 0 var(--dark);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-sport::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.5s ease;
             z-index: -1;
         }
         
-        .player {
-            position: absolute;
-            bottom: 20px;
-            width: 40px;
-            height: 60px;
-            background-color: #ff6b6b;
-            border-radius: 50% 50% 40% 40%;
-            animation: run 15s linear infinite;
+        .btn-sport:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 0 var(--dark);
+            background: linear-gradient(to right, var(--accent), var(--primary));
+        }
+
+        .btn-sport:hover::before {
+            left: 100%;
         }
         
-        .player:before {
+        .btn-sport:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 0 var(--dark);
+        }
+
+        /* Estilo para los botones de compañeros */
+        .classmate-btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 0 var(--dark);
+            text-decoration: none;
+            text-align: center;
+            min-width: 200px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .classmate-btn::before {
             content: "";
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #ff6b6b;
-            border-radius: 50%;
-            top: -10px;
-            left: 10px;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
         }
         
-        @keyframes run {
-            0% { left: -50px; }
-            100% { left: 100%; }
+        .classmate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 0 var(--dark);
+            background: linear-gradient(to right, var(--accent), var(--primary));
+        }
+
+        .classmate-btn:hover::before {
+            left: 100%;
         }
         
-        .ball {
+        .classmate-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 0 var(--dark);
+        }
+
+        /* Contenedor de botones de compañeros */
+        .classmates-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .floating {
+            animation: floating 4s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Balones de fútbol animados */
+        .soccer-ball {
+            position: fixed;
+            font-size: 24px;
+            color: var(--primary);
+            z-index: 100;
+            pointer-events: none;
+            text-shadow: 0 0 8px rgba(255,255,255,0.5);
+            animation: floatBall 15s linear infinite;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 3px var(--shadow));
+            transform-origin: center;
+        }
+
+        @keyframes floatBall {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            50% {
+                transform: translate(50vw, 50vh) rotate(180deg) scale(1.2);
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(100vw, 100vh) rotate(360deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Efecto de balón girando */
+        @keyframes spinBall {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        /* Contenedor de elementos decorativos */
+        .sport-container {
             position: absolute;
-            bottom: 40px;
-            left: 20px;
-            width: 25px;
-            height: 25px;
-            background: white;
-            border-radius: 50%;
-            animation: roll 15s linear infinite;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
         }
-        
-        @keyframes roll {
-            0% { left: 20px; transform: rotate(0deg); }
-            100% { left: calc(100% + 20px); transform: rotate(720deg); }
+
+        /* Elementos decorativos fijos */
+        .decorative-sport {
+            position: absolute;
+            font-size: 40px;
+            color: var(--primary);
+            opacity: 0.2;
+            animation: spinBall 3s ease-in-out infinite;
         }
-        
+
+        /* Líneas de campo animadas */
+        .field-line {
+            position: fixed;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+            pointer-events: none;
+        }
+
         @media (max-width: 768px) {
-            .content {
-                grid-template-columns: 1fr;
+            .container {
+                width: 95%;
             }
             
-            .friends ul {
-                grid-template-columns: 1fr;
+            h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 20px;
+            }
+
+            .centrar-texto::after {
+                display: none;
+            }
+
+            .classmate-btn {
+                min-width: 150px;
+                padding: 10px 15px;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Juan Pérez</h1>
-            <p>Mi Página Personal - Pasión por el Fútbol</p>
-            <div class="soccer-ball"></div>
-        </header>
-        
-        <div class="content">
-            <div class="card personal-info">
-                <h2>Datos Personales</h2>
-                <p><strong>Nombre:</strong> Juan Pérez</p>
-                <p><strong>Carrera:</strong> Ingeniería de Sistemas</p>
-                <p><strong>Universidad:</strong> Universidad Nacional</p>
-                <p><strong>Semestre:</strong> 5to Semestre</p>
-            </div>
-            
-            <div class="card courses">
-                <h2>Cursos Actuales</h2>
-                <ul>
-                    <li>Programación Web</li>
-                    <li>Base de Datos</li>
-                    <li>Inteligencia Artificial</li>
-                    <li>Redes de Computadoras</li>
-                    <li>Ingeniería de Software</li>
-                </ul>
-            </div>
-            
-            <div class="card friends">
-                <h2>Páginas de Compañeros</h2>
-                <ul>
-                    <li><a href="#">María González</a></li>
-                    <li><a href="#">Carlos Rodríguez</a></li>
-                    <li><a href="#">Ana Martínez</a></li>
-                    <li><a href="#">Luis García</a></li>
-                </ul>
-            </div>
-            
-            <div class="card">
-                <h2>Mi Pasión: El Fútbol</h2>
-                <p>El fútbol es más que un deporte, es una pasión que une personas y culturas. Me encanta jugar los fines de semana con mis amigos y seguir los partidos de mi equipo favorito.</p>
-                <p>Mi posición favorita es delantero, disfruto anotando goles y trabajando en equipo para alcanzar la victoria.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="field">
-        <div class="player"></div>
-        <div class="ball"></div>
+    <div class="sport-container">
+        <div class="decorative-sport" style="top: 10%; left: 5%;">⚽</div>
+        <div class="decorative-sport" style="top: 30%; right: 10%;">🥅</div>
+        <div class="decorative-sport" style="bottom: 20%; left: 15%;">👟</div>
+        <div class="decorative-sport" style="bottom: 40%; right: 5%;">⚽</div>
     </div>
 
+    <header class="floating">
+        <div class="container">
+            <h1>RUTH MERY BARRIGA VERA</h1>
+            <p>« Estudiante Universitaria - Jugando el partido del conocimiento »</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sección de imagen -->
+        <section id="foto-perfil">
+            <div class="centrar-texto">
+                <h2>Mi Equipo Universitario</h2>
+            </div>
+            <img src="Mariposa.jpg" alt="Ruth Mery y sus compañeros" class="imagen-centrada">
+            <div class="centrar-texto">
+                <p>« Como en el fútbol, en la universidad cada curso es un partido que debemos ganar »</p>
+                <button class="btn-sport">Ver Mi Formación</button>
+            </div>
+        </section>
+
+        <section id="informacion-personal">
+            <h2>Datos del Estudiante</h2>
+            <ul>
+                <li><strong>Nombre:</strong> RUTH MERY BARRIGA VERA</li>
+                <li><strong>Carrera:</strong> Estudiante de Contabilidad</li>
+                <li><strong>Universidad:</strong> UNIVERSIDAD CATOLICA SAN PABLO</li>
+            </ul>
+        </section>
+
+        <section id="cursos-actuales">
+            <h2>Cursos de Conocimiento</h2>
+            <ul>
+                <li><strong>Contabilidad de Costos II</strong>
+                    <p>Guía: <a href="https://www.linkedin.com/in/julio-c%C3%A9sar-liz%C3%A1rraga-zegarra-01524289/">Julio César Lizarraga Zegarra</a></p>
+                </li>
+                <li><strong>Normatividad Contable II</strong>
+                    <p>Guía: <a href="https://www.linkedin.com/in/edgard-fredy-leiva-flores-a17b2aa0/">Edgard Fredy Leiva Flores</a></p>
+                </li>
+                <li><strong>Estadistica y Probabilidades</strong>
+                    <p>Guía: <a href="https://www.linkedin.com/in/ricardo-enr%C3%ADquez-c%C3%A1ceres-88200325/">Ricardo Enríquez Cáceres</a></p>
+                </li>
+                <li><strong>Macroeconomia</strong>
+                    <p>Guía: <a href="https://www.linkedin.com/in/lieslie-gallegos-arias-investigador-renacyt-773713a5/">Lieslie Gallegos Arias</a></p>
+                </li>
+                <li><strong>Introduccion a Ciencia de la Computacion</strong>
+                    <p>Guía: <a href="https://www.linkedin.com/in/ecuadrosv/">Ernesto Cuadros-Vargas</a></p>
+                </li>
+                <li><strong>Contabilidad Tributaria I</strong>
+                    <p>Guía: <a href="https://www.linkedin.com/in/helmut-monzon-86180b109/">Helmut Monzon</a></p>
+                </li>
+                <li><strong>Moral</strong>
+                    <p>Guía: <a href="https://www.linkedin.com/in/andr%C3%A9s-jorge-%C3%A1lvarez-grupp-a6b158152/">Andrés Jorge Álvarez Grupp</a></p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="classmates">
+            <h2>Compañeros de Equipo</h2>
+            <div class="classmates-container">
+                <a href="https://shyrlyzarai1.github.io/Shyrly-Zarai-Pacco-Cruz/" target="_blank" class="classmate-btn">Shyrly Zarai Pacco Cruz</a>
+                <a href="https://ruthmerybg.github.io/RuthMeryBarrigaVera/" target="_blank" class="classmate-btn">Ruth Mery Barriga Vera</a>
+                <a href="https://nicolegaldos.neocities.org" target="_blank" class="classmate-btn">Nicole Alexandra Galdós Champi</a>
+                <a href="https://yaninarosalinda.github.io/Yanina-Rosalinda-Quispe-Choque/" target="_blank" class="classmate-btn">Yanina Rosalinda Quispe Choque</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Ruth Mery Barriga Vera | Jugando el partido del conocimiento</p>
+    </footer>
+
     <script>
-        // Animación adicional para las tarjetas
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.card');
-            
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                
-                setTimeout(() => {
-                    card.style.transition = 'opacity 0.5s, transform 0.5s';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 200);
+        // Efecto especial para botones
+        document.querySelectorAll('.btn-sport').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.background = 'linear-gradient(to right, #152a50, var(--primary))';
             });
             
-            // Efecto de movimiento para la pelota en el header
-            const soccerBall = document.querySelector('.soccer-ball');
-            let direction = 1;
+            button.addEventListener('mouseleave', () => {
+                button.style.background = 'linear-gradient(to right, var(--primary), var(--accent))';
+            });
             
-            setInterval(() => {
-                const currentRight = parseInt(window.getComputedStyle(soccerBall).right);
+            button.addEventListener('click', () => {
+                button.style.transform = 'translateY(2px)';
+                button.style.boxShadow = '0 2px 0 var(--dark)';
+                setTimeout(() => {
+                    button.style.transform = 'translateY(-3px)';
+                    button.style.boxShadow = '0 6px 0 var(--dark)';
+                }, 200);
+            });
+        });
+        
+        // Crear balones de fútbol animados
+        function createSoccerBalls() {
+            const ballChars = ['⚽', '🥅', '👟'];
+            const ballColors = ['#1e3d72', '#2e5aa7', '#c9a227', '#2d8c3a'];
+            
+            for (let i = 0; i < 12; i++) {
+                setTimeout(() => {
+                    const ball = document.createElement('div');
+                    ball.className = 'soccer-ball';
+                    ball.innerHTML = ballChars[Math.floor(Math.random() * ballChars.length)];
+                    ball.style.left = Math.random() * -100 + 'px';
+                    ball.style.top = Math.random() * 100 + 'vh';
+                    ball.style.fontSize = (Math.random() * 25 + 20) + 'px';
+                    ball.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                    ball.style.animationDelay = (Math.random() * 5) + 's';
+                    ball.style.opacity = Math.random() * 0.5 + 0.4;
+                    ball.style.color = ballColors[Math.floor(Math.random() * ballColors.length)];
+                    document.body.appendChild(ball);
+
+                    setTimeout(() => {
+                        ball.remove();
+                    }, 25000);
+                }, i * 800);
+            }
+        }
+
+        // Efecto de giro para elementos decorativos
+        function animateDecorativeSports() {
+            const sports = document.querySelectorAll('.decorative-sport');
+            sports.forEach((sport, index) => {
+                sport.style.animationDelay = `${index * 0.5}s`;
+            });
+        }
+
+        // Crear líneas de campo
+        function createFieldLines() {
+            for (let i = 0; i < 5; i++) {
+                const line = document.createElement('div');
+                line.className = 'field-line';
+                line.style.width = Math.random() * 200 + 50 + 'px';
+                line.style.height = '2px';
+                line.style.left = Math.random() * 100 + 'vw';
+                line.style.top = Math.random() * 100 + 'vh';
+                line.style.opacity = Math.random() * 0.2 + 0.1;
+                line.style.animation = `floatBall ${Math.random() * 20 + 10}s linear infinite`;
+                document.body.appendChild(line);
+            }
+        }
+
+        // Iniciar efectos
+        document.addEventListener('DOMContentLoaded', () => {
+            createSoccerBalls();
+            animateDecorativeSports();
+            createFieldLines();
+            setInterval(createSoccerBalls, 5000);
+        });
+
+        // Efecto de movimiento al pasar el mouse
+        document.addEventListener('mousemove', (e) => {
+            const balls = document.querySelectorAll('.soccer-ball');
+            balls.forEach(ball => {
+                const rect = ball.getBoundingClientRect();
+                const x = rect.left + rect.width/2;
+                const y = rect.top + rect.height/2;
+                const distance = Math.sqrt(Math.pow(e.clientX - x, 2) + Math.pow(e.clientY - y, 2));
                 
-                if (currentRight > 100) direction = -1;
-                if (currentRight < 20) direction = 1;
-                
-                soccerBall.style.right = (currentRight + direction * 5) + 'px';
-            }, 100);
+                if (distance < 100) {
+                    ball.style.transform = `translate(${(e.clientX - x)/10}px, ${(e.clientY - y)/10}px)`;
+                }
+            });
         });
     </script>
 </body>
