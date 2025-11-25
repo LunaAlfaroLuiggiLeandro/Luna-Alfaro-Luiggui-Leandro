@@ -456,6 +456,107 @@
             50% { transform: translateY(-20px); }
         }
 
+        /* Modal de información personal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), 
+                        url('https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            box-shadow: 0 0 40px rgba(204, 0, 0, 0.5);
+            border: 3px solid var(--secondary);
+            animation: modalAppear 0.5s ease-out;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+            background-color: var(--secondary);
+            transform: rotate(90deg);
+        }
+
+        .modal-text {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+            margin-top: 20px;
+        }
+
+        .modal-text h3 {
+            color: var(--secondary);
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        .modal-text p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .peru-flag {
+            display: inline-block;
+            width: 20px;
+            height: 15px;
+            background: linear-gradient(90deg, #CC0000 33%, white 33%, white 66%, #CC0000 66%);
+            margin: 0 5px;
+            border: 1px solid white;
+        }
+
         @media (max-width: 768px) {
             .container {
                 width: 95%;
@@ -482,10 +583,42 @@
             .soccer-ball {
                 font-size: 24px;
             }
+
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .modal-text {
+                padding: 20px;
+            }
+
+            .modal-text h3 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Modal de información personal -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-text">
+                <h3>Sobre Mí</h3>
+                <p>Mi nombre es <strong>Luiggi</strong>, tengo <strong>22 años</strong> y soy de <strong>Cusco</strong> <span class="peru-flag"></span>. Actualmente vivo solo y disfruto desarrollar mi independencia y mis proyectos personales en <strong>Arequipa</strong>.</p>
+                
+                <p>Soy una persona apasionada por el <strong>fútbol</strong> ⚽, deporte que me acompaña desde pequeño y que forma parte importante de mi día a día. También soy un gran admirador de la <strong>gastronomía peruana</strong>, especialmente del <strong>ceviche</strong> 🍋, uno de mis platos favoritos.</p>
+                
+                <p>Además, disfruto mucho de la <strong>música</strong> 🎵, que me acompaña en diferentes momentos y me ayuda a relajarme, concentrarme o simplemente pasar un buen rato. Tengo diversos intereses y siempre estoy buscando aprender y sumar nuevas experiencias.</p>
+                
+                <p style="text-align: center; margin-top: 25px; font-style: italic; color: var(--secondary);">
+                    ¡Siempre con la pasión de la blanquirroja! <span class="peru-flag"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
     <header class="floating">
         <div class="container">
             <h1>LUNA ALFARO LUIGGI LEANDRO</h1>
@@ -502,7 +635,7 @@
             <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Luna Alfaro" class="imagen-centrada">
             <div class="centrar-texto">
                 <p>« Como la selección peruana, en la universidad jugamos con corazón y determinación »</p>
-                <button class="btn-sport">Ver Mi Formación</button>
+                <button class="btn-sport" id="btnInfo">Ver Mi Formación</button>
             </div>
         </section>
 
@@ -554,10 +687,33 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Luna Alfaro Luiggi Leandro | Con el corazón de la blanquirroja</p>
+        <p>&copy; 2023 Luna Alfaro Luiggi Leandro | Con el corazón de la blanquirroja</p>
     </footer>
 
     <script>
+        // Modal functionality
+        const modal = document.getElementById('infoModal');
+        const btn = document.getElementById('btnInfo');
+        const closeBtn = document.querySelector('.close-modal');
+
+        btn.addEventListener('click', function() {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
         // Efecto especial para botones
         document.querySelectorAll('.btn-sport').forEach(button => {
             button.addEventListener('mouseenter', () => {
@@ -640,7 +796,7 @@
 
         // Click en cualquier parte para crear un balón nuevo
         document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('soccer-ball')) return;
+            if (e.target.classList.contains('soccer-ball') || e.target.classList.contains('btn-sport') || e.target === modal) return;
             
             const ball = document.createElement('div');
             ball.className = 'soccer-ball';
